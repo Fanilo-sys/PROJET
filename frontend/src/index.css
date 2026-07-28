@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animations moved to tailwind.config.js (use classes: animate-fade-in-up, animate-error-shake, animate-error-bounce) */
+
+/* Global table horizontal scroller utility */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+}
+.table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: rgba(99,102,241,0.25);
+  border-radius: 8px;
+}
+
+/* Login-specific helpers replaced by Tailwind utility classes in LoginPage.tsx */
+
+.verses-overlay {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60;
+  text-align: center;
+  pointer-events: none;
+}
+.verse-box { opacity: 0; transition: opacity 1.2s, transform 1.2s; }
+.verse-left { transform: translateX(-60px); }
+.verse-bottom { transform: translateY(40px); }
+.verse-enter { opacity: 1; transform: translateX(0) translateY(0); }
+.verse-exit { opacity: 0; transform: translateX(60px); }
+.verse-text { color: white; font-size: 1.6rem; font-style: italic; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+
+/* error animations moved to Tailwind config */
+
+/* Mobile quick-fixes: hide overlays that break layout on small Android viewports */
+@media (max-width: 640px) {
+  .verses-overlay { display: none !important; }
+  .info-tooltip { display: none !important; }
+}
+
+/* Use CSS variable --vh to work around mobile browser UI height (use with class vh-screen) */
+.vh-screen {
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Table cell truncation utilities used across sections to keep columns uniform */
+.cell-truncate {
+  max-width: 220px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.cell-truncate-sm {
+  max-width: 120px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.col-w-24 { width: 6rem; }
+.col-w-28 { width: 7rem; }
+.col-w-36 { width: 9rem; }
+.col-w-44 { width: 11rem; }
+.col-w-48 { width: 12rem; }
+
+/* President column exact style used in ReceptionTableau */
+.cell-president {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}

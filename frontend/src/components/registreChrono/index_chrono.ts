@@ -1,0 +1,1 @@
+export { RegistreChronoSection } from './RegistreChronoSection';
