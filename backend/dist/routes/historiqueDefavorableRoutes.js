@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const historiqueDefavorableController_1 = require("../controllers/historiqueDefavorableController");
+const validate_1 = require("../middleware/validate");
+const dossierSchema_1 = require("../validations/dossierSchema");
+const router = (0, express_1.Router)();
+router.post('/', (0, validate_1.validate)(dossierSchema_1.historiqueDefavorableSchema), historiqueDefavorableController_1.ajouterHistoriqueDefavorable);
+router.get('/', historiqueDefavorableController_1.listerHistoriqueDefavorable);
+exports.default = router;
